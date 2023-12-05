@@ -1,0 +1,70 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.header_container{
+  display:flex;
+}
+
+.title_container{
+  display:flex;  /*Flexコンテナ*/
+  // 縦方向に並べる
+  flex-direction:column;
+  // 幅と位置を指定
+}
+
+.body_container{
+  display:flex;
+  flex-direction:column;
+    align-items:center;
+}
+
+.title{
+  margin: 0px 0px 0px 80px;
+}
+
+.body{
+  margin: 0px 0px 0px 150px;
+  position: fixed;
+  left:300px;
+}
+
+.titlebox{
+  margin: 0px 0px 0px 80px;
+}
+
+.bodybox{
+  margin: 0px 0px 0px 150px;
+  position: fixed;
+  left:200px;
+}
+
+.showbox{
+  position:fixed;
+  left:700px;
+}
+
+.editbox{
+  position:fixed;
+  left:745px;
+}
+
+.destroybox{
+  position:fixed;
+  left:790px;
+}
+
+// タイトル・ボディー一覧用
+.vertical-table　td{
+  display: block;
+}
+
+.vertical-table td + td {
+  margin-top: 10px;
+}
+
+.update_book .body {
+  margin-top:20px;
+  margin-bottom: 30px;  /* 任意のマージンを設定してください */
+  display: inline-block;  /* インラインブロック要素に変更 */
+}

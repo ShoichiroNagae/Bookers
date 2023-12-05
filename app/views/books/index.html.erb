@@ -1,0 +1,72 @@
+<!-- app/views/books/index.html.erb -->
+
+<html>
+  <head>
+    <!-- ページに適用されるスタイルシートのリンク -->
+    <link rel="stylesheet" href="/assets/application.css" data-turbolinks-track="reload">
+  </head>
+  <body>
+    <h1>Books</h1>
+
+    <!-- 登録された本の一覧テーブル -->
+    <table>
+      <!-- ヘッダーの表示 -->
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Action</th> <!-- アクション列を追加 -->
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- 保存されている本の一覧を取得 -->
+        <% @books.each do |book| %>
+          <tr>
+            <!-- 登録タイトル一覧 -->
+            <td><%= book.title %></td>
+            <!-- 登録ボディー一覧 -->
+            <td><%= book.body %></td>
+            <!-- Show, Edit, Destroyボタン表示 -->
+            <td>
+              <%= link_to 'Show', show_book_path(book.id) %> |
+              <%= link_to 'Edit', edit_book_path(book.id) %> |
+              <%= link_to "Destroy", destroy_book_path(book.id),
+                          method: :delete,
+                          data: { confirm: "本当に削除しますか？" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <h2>新規投稿</h2>
+    <!-- 空白のエラー処理 -->
+      <% if @book.errors.any? %>
+        <!--常にerror_explanationを表示しないよう，ネストの中に書く-->
+        <div id="error">
+        <%= @book.errors.count %> errors prohibited this book from being saved:
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+
+    <!-- 新規投稿用フォーム -->
+    <%= form_with model: @book do |f| %>
+      <div>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+      </div>
+      <div>
+        <h4>Body</h4>
+        <%= f.text_area :body %>
+      </div>
+      <div>
+        <%= f.submit 'Create Book' %>
+      </div>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!-- フラッシュメッセージ表示 -->
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<!-- Title -->
+<div style="display: flex;">
+  <h4 style="margin-right: 5px;">Title : </h4>
+  <h4><%= @book.title %></h4>
+</div>
+
+<!-- Body -->
+<div style="display: flex;">
+  <h4 style="margin-right: 5px;">Body : </h4>
+  <h4><%= @book.body %></h4>
+</div>
+
+<%= link_to "edit", edit_book_path(@book.id) %>
+<a href="/books">back</a>
